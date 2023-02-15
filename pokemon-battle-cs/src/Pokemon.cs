@@ -50,6 +50,25 @@ namespace PokemonBattle
             this.moves = movesList.ToArray();
         }
 
+        public static Pokemon fromString(string s)
+        {
+            //"pikachulita,0,100,100;100;100;100;100;100,ELECTRIC,null,test"
+            var sArray = s.Split(",");
+            var name = sArray[0];
+            var userId = int.Parse(sArray[1]);
+            var level = int.Parse(sArray[2]);
+            var stats = Stats.fromString(sArray[3]);
+            var type1 = pType.fromString(sArray[4]);
+            var type2 = pType.fromString(sArray[5]);
+            var moves = new List<String>();
+            for (int i = 6; i < sArray.Length; i++)
+            {
+                moves.Add(sArray[i]);
+            }
+
+            return new Pokemon(name, userId, level, stats, type1, type2, moves.ToArray());
+
+        }
         internal class Stats
         {
             public int hp;
@@ -68,6 +87,25 @@ namespace PokemonBattle
                 this.spd = spd;
                 this.spe = spe;
             }
+
+            public static Stats fromString(string s, char sep = ';')
+            {
+                var sArray = s.Split(sep);
+
+                var hp = int.Parse(sArray[0]);
+                var atk = int.Parse(sArray[1]);
+                var def = int.Parse(sArray[2]);
+                var spa = int.Parse(sArray[3]);
+                var spd = int.Parse(sArray[4]);
+                var spe = int.Parse(sArray[5]);
+
+                return new Stats(hp, atk, def, spa, spd, spe);
+            }
+
+            public override string ToString()
+            {
+                return $"{hp};{atk};{def};{spa};{spd};{spe}";
+            }
         }
         public string attack(int moveId, Pokemon target)
         {
@@ -85,7 +123,24 @@ namespace PokemonBattle
         }
 
 
+        public override string ToString()
+        {
+            //"pikachulita,0,100,100;100;100;100;100;100,ELECTRIC,null,test"
 
+            string movesString = "";
+            if (moves != null)
+            {
+                foreach (Move move in moves)
+                {
+                    movesString += move.name + ",";
+                }
+            }
+            movesString=movesString.Substring(0,movesString.Length-2);
+
+            var t1 = types[0].ToString();
+            var t2 = types[1].ToString();
+            return $"{name},{userId},{level},{stats.ToString()},{t1},{types[1].ToString()},{movesString}";
+        }
 
 
 

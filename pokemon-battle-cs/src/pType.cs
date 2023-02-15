@@ -8,6 +8,20 @@ namespace PokemonBattle
 {
     public static class pType
     {
+        public static types fromString(string s)
+        {
+            switch (s)
+            {
+                case "NORMAL":
+                    return types.NORMAL;
+                case "FIRE":
+                    return types.FIRE;
+                case "WATER":
+                    return types.WATER;
+                default: return types.NONE;
+            }
+        }
+
         /// <summary>
         /// calculates the effectiveness of one type over another type
         /// </summary>
@@ -78,14 +92,13 @@ namespace PokemonBattle
 
                     ret = 0;
                 }
-
             }
-
 
             return ret;
         }
         public enum types
         {
+            NONE,
             NORMAL,
             FIRE,
             WATER,

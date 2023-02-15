@@ -15,7 +15,7 @@ namespace PokemonBattle
         /// <param name="def">it's the deffense type</param>
         /// <returns></returns>
         public static float calcEfectivity(types? atk, types? def)
-        { 
+        {
             float ret = 1;
 
             if (atk == null || def == null)
@@ -52,12 +52,12 @@ namespace PokemonBattle
             else if (atk == types.WATER)
             {
 
-                if (def == types.WATER || def == types.GRASS|| def == types.DRAGON)
+                if (def == types.WATER || def == types.GRASS || def == types.DRAGON)
                 {
 
                     ret = 1 / 2;
                 }
-                else if (def == types.FIRE || def == types.GROUND|| def == types.ROCK)
+                else if (def == types.FIRE || def == types.GROUND || def == types.ROCK)
                 {
                     ret = 2;
                 }
@@ -69,7 +69,7 @@ namespace PokemonBattle
                 {
                     ret = 1 / 2;
                 }
-                else if (def == types.WATER|| def == types.FLYING)
+                else if (def == types.WATER || def == types.FLYING)
                 {
                     ret = 2;
                 }
@@ -85,7 +85,7 @@ namespace PokemonBattle
             return ret;
         }
         public enum types
-        { 
+        {
             NORMAL,
             FIRE,
             WATER,
@@ -105,7 +105,7 @@ namespace PokemonBattle
             STEEL,
             FAIRY
         }
-            
+
     }
 
 

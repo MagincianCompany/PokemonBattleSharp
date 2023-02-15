@@ -18,25 +18,25 @@ namespace PokemonBattle.Moves
         public int power;
 
         public Func<Move, Pokemon, Pokemon, string>? onAttack;
-        
 
-        public Move(string name, string description,pType.types pType,int power, string onAttakcString)
+
+        public Move(string name, string description, pType.types pType, int power, string onAttakcString)
         {
             this.name = name;
             this.description = description;
             this.pType = pType;
             this.power = power;
-            this.onAttack =MoveActions.parseAttack(onAttakcString);
+            this.onAttack = MoveActions.parseAttack(onAttakcString);
         }
 
         public enum mType
-        { 
+        {
             PHSYSICAL,
             SPECIAL
         }
 
-        
-        
-        
+
+
+
     }
 }

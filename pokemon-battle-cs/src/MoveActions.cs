@@ -9,11 +9,11 @@ namespace PokemonBattle.Moves.Actions
 {
     internal static class MoveActions
     {
-        public static Func<Move, Pokemon, Pokemon,string>? parseAttack(string s)
+        public static Func<Move, Pokemon, Pokemon, string>? parseAttack(string s)
         {
             if (s == "targetDamage")
             {
-                return (move,self,target)=>targetDamage(move,self,target);
+                return (move, self, target) => targetDamage(move, self, target);
             }
             else return null;
         }
@@ -25,12 +25,12 @@ namespace PokemonBattle.Moves.Actions
                 B = 1.5f;
 
             float E = 1;
-            foreach (var type in target.types) 
+            foreach (var type in target.types)
             {
-                E*=pType.calcEfectivity(move.pType, type);
+                E *= pType.calcEfectivity(move.pType, type);
             }
 
-            float V = (new Random()).Next(85,101);
+            float V = (new Random()).Next(85, 101);
 
             float N = self.level;
 
@@ -48,21 +48,21 @@ namespace PokemonBattle.Moves.Actions
                 D = target.stats.spd;
             }
             else
-            { 
-                A= 0;
+            {
+                A = 0;
                 B = 0;
             }
 
 
             float P = move.power;
-            
+
 
             float damage = 0.01f * B * E * V * (((0.2f * N + 1) * A * P) / (25 * D) + 2);
 
-            target.stats.hp = (int)Math.Truncate(target.stats.hp-damage);
+            target.stats.hp = (int)Math.Truncate(target.stats.hp - damage);
 
             return $"{self.name}->{target.name}: {move.name}({move.type},{move.pType})->({target.types[0]},{target.types[1]}{{{E}}} ==> {Math.Ceiling(damage)})";
-            
+
         }
     }
 }

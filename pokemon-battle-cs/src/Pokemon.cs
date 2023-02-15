@@ -15,22 +15,9 @@ namespace PokemonBattle
         internal Stats? stats;
         internal pType.types?[] types = new pType.types?[2];
         internal Move?[] moves = new Move[3];
-        
 
-        public Pokemon(string name, int userId,int level, Stats? stats,pType.types t1, pType.types? t2, params Move[] moves)
-        {
-            this.name = name;
-            this.userId = userId;
-            this.level = level;
-            this.stats = stats;
-            
-            types=new pType.types?[2];
-            types[0] = t1;
-            types[1] = t2;
 
-            this.moves = moves;
-        }
-        public Pokemon(string name, int userId,int level, Stats? stats, pType.types t1, pType.types? t2, params string[] moves)
+        public Pokemon(string name, int userId, int level, Stats? stats, pType.types t1, pType.types? t2, params Move[] moves)
         {
             this.name = name;
             this.userId = userId;
@@ -41,16 +28,29 @@ namespace PokemonBattle
             types[0] = t1;
             types[1] = t2;
 
-            List<Move> movesList= new List<Move>();
-            foreach (var move in moves) 
+            this.moves = moves;
+        }
+        public Pokemon(string name, int userId, int level, Stats? stats, pType.types t1, pType.types? t2, params string[] moves)
+        {
+            this.name = name;
+            this.userId = userId;
+            this.level = level;
+            this.stats = stats;
+
+            types = new pType.types?[2];
+            types[0] = t1;
+            types[1] = t2;
+
+            List<Move> movesList = new List<Move>();
+            foreach (var move in moves)
             {
                 movesList.Add(Move.KeyMovePair[move]);
             }
-            
-            this.moves= movesList.ToArray();
+
+            this.moves = movesList.ToArray();
         }
-       
-        internal class Stats 
+
+        internal class Stats
         {
             public int hp;
             public int atk;

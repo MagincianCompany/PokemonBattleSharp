@@ -93,20 +93,94 @@ namespace PokemonBattle
                     ret = 0;
                 }
             }
+            else if (atk == types.GRASS)
+            {
+
+                if (def == types.STEEL || def == types.BUG || def == types.FIRE || def == types.GRASS || def == types.POISON || def == types.FLYING)
+                {
+                    ret = 1 / 2;
+                }
+                else if (def == types.WATER || def == types.PSYCHIC || def == types.GROUND)
+                {
+                    ret = 2;
+                }
+            }
+            else if (atk == types.ICE)
+            {
+
+                if (def == types.STEEL || def == types.WATER || def == types.FIRE || def == types.ICE)
+                {
+                    ret = 1 / 2;
+                }
+                else if (def == types.DRAGON || def == types.BUG|| def == types.GROUND || def == types.FLYING)
+                {
+                    ret = 2;
+                }
+            }
+            else if (atk == types.FIGHTING)
+            {
+
+                if (def == types.BUG || def == types.FAIRY || def == types.PSYCHIC || def == types.POISON || def == types.FLYING)
+                {
+                    ret = 1 / 2;
+                }
+                else if (def == types.STEEL || def == types.ICE || def == types.NORMAL || def == types.ROCK || def == types.DARK)
+                {
+                    ret = 2;
+                }
+                else if (def == types.GHOST)
+                {
+
+                    ret = 0;
+                }
+            }
+            else if (atk == types.POISON)
+            {
+                if (def == types.GHOST || def == types.ROCK|| def == types.GROUND || def == types.POISON)
+                {
+                    ret = 1 / 2;
+                }
+                else if (def == types.FAIRY || def == types.BUG)
+                {
+                    ret = 2;
+                }
+                else if (def == types.STEEL)
+                {
+
+                    ret = 0;
+                }
+            }
+            else if (atk == types.GROUND)
+            {
+                if (def == types.BUG || def == types.GRASS)
+                {
+                    ret = 1 / 2;
+                }
+                else if (def == types.STEEL || def == types.ELECTRIC || def == types.ROCK || def == types.GROUND)
+                {
+                    ret = 2;
+                }
+                else if (def == types.FLYING)
+                {
+
+                    ret = 0;
+                }
+            }
+
 
             return ret;
         }
         public enum types
         {
-            NONE,
-            NORMAL,
-            FIRE,
-            WATER,
-            ELECTRIC,
-            GRASS,
-            ICE,
-            FIGHTING,
-            POISON,
+            NONE,//
+            NORMAL,//
+            FIRE,//
+            WATER,//
+            ELECTRIC,//
+            GRASS,//
+            ICE,//
+            FIGHTING,//
+            POISON,//
             GROUND,
             FLYING,
             PSYCHIC,

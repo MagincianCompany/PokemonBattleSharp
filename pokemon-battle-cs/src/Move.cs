@@ -48,14 +48,14 @@ namespace PokemonBattle.Moves
         }
 
 
-        public Move(string name, string description, pType.types pType, mType type, int power, string onAttakcString)
+        public Move(string name, string description, pType.types pType, mType type, int power, string onAttackString)
         {
             this.name = name;
             this.description = description;
             this.ptype = pType;
             this.type = type;
             this.power = power;
-            this.onAttack = MoveActions.parseAttack(onAttakcString);
+            this.onAttack = MoveActions.parseAttack(onAttackString);
         }
 
         public override string ToString()

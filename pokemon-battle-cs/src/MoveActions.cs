@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokemonBattle.Moves.Actions
 {
-    internal static class MoveActions
+    internal abstract class MoveActions
     {
         public static Func<Move, Pokemon, Pokemon, string>? parseAttack(string s)
         {
@@ -19,10 +19,7 @@ namespace PokemonBattle.Moves.Actions
         }
         public static string? toString(Func<Move, Pokemon, Pokemon, string> func)
         {
-            if(func.Method.Name== ((Func<Move, Pokemon, Pokemon, string>)targetDamage).Method.Name)
-                return "targetDamage";
-            else
-                return null;
+            return func.Method.Name;
         }
 
         public static String targetDamage(Move move, Pokemon self, Pokemon target)

@@ -18,6 +18,8 @@ namespace PokemonBattle
                     return types.FIRE;
                 case "WATER":
                     return types.WATER;
+                case "GRASS":
+                    return types.GRASS;
                 default: return types.NONE;
             }
         }
@@ -32,7 +34,7 @@ namespace PokemonBattle
         {
             float ret = 1;
 
-            if (atk == null || def == null)
+            if (atk == null || def == null || atk == types.NONE || def == types.NONE)
                 return ret;
 
             if (atk == types.NORMAL)
@@ -41,7 +43,7 @@ namespace PokemonBattle
                 if (def == types.ROCK || def == types.STEEL)
                 {
 
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.GHOST)
                 {
@@ -56,11 +58,11 @@ namespace PokemonBattle
                 if (def == types.FIRE || def == types.WATER || def == types.ROCK || def == types.DRAGON)
                 {
 
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.GRASS || def == types.ICE || def == types.BUG || def == types.STEEL)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
             }
             else if (atk == types.WATER)
@@ -69,11 +71,11 @@ namespace PokemonBattle
                 if (def == types.WATER || def == types.GRASS || def == types.DRAGON)
                 {
 
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.FIRE || def == types.GROUND || def == types.ROCK)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
             }
             else if (atk == types.ELECTRIC)
@@ -81,11 +83,11 @@ namespace PokemonBattle
 
                 if (def == types.ELECTRIC || def == types.GRASS || def == types.DRAGON)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.WATER || def == types.FLYING)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
                 else if (def == types.GROUND)
                 {
@@ -98,11 +100,11 @@ namespace PokemonBattle
 
                 if (def == types.STEEL || def == types.BUG || def == types.FIRE || def == types.GRASS || def == types.POISON || def == types.FLYING)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.WATER || def == types.PSYCHIC || def == types.GROUND)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
             }
             else if (atk == types.ICE)
@@ -110,11 +112,11 @@ namespace PokemonBattle
 
                 if (def == types.STEEL || def == types.WATER || def == types.FIRE || def == types.ICE)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.DRAGON || def == types.BUG|| def == types.GROUND || def == types.FLYING)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
             }
             else if (atk == types.FIGHTING)
@@ -122,11 +124,11 @@ namespace PokemonBattle
 
                 if (def == types.BUG || def == types.FAIRY || def == types.PSYCHIC || def == types.POISON || def == types.FLYING)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.STEEL || def == types.ICE || def == types.NORMAL || def == types.ROCK || def == types.DARK)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
                 else if (def == types.GHOST)
                 {
@@ -138,11 +140,11 @@ namespace PokemonBattle
             {
                 if (def == types.GHOST || def == types.ROCK|| def == types.GROUND || def == types.POISON)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.FAIRY || def == types.BUG)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
                 else if (def == types.STEEL)
                 {
@@ -154,11 +156,11 @@ namespace PokemonBattle
             {
                 if (def == types.BUG || def == types.GRASS)
                 {
-                    ret = 1 / 2;
+                    ret = 1 / 2f;
                 }
                 else if (def == types.STEEL || def == types.ELECTRIC || def == types.ROCK || def == types.GROUND)
                 {
-                    ret = 2;
+                    ret = 2f;
                 }
                 else if (def == types.FLYING)
                 {

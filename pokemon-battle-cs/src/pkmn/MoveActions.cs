@@ -9,7 +9,7 @@ namespace PokemonBattle.Moves.Actions
 {
     internal abstract class MoveActions
     {
-        public static Func<Move, Pokemon, Pokemon, string>? parseAttack(string s)
+        public static Func<Move, PokemonActive, PokemonActive, string>? parseAttack(string s)
         {
             if (s == "targetDamage")
             {
@@ -17,12 +17,12 @@ namespace PokemonBattle.Moves.Actions
             }
             else return null;
         }
-        public static string? toString(Func<Move, Pokemon, Pokemon, string> func)
+        public static string? toString(Func<Move, PokemonActive, PokemonActive, string> func)
         {
             return func.Method.Name;
         }
 
-        public static String targetDamage(Move move, Pokemon self, Pokemon target)
+        public static string targetDamage(Move move, PokemonActive self, PokemonActive target)
         {
 
             float B = 1;
@@ -35,7 +35,7 @@ namespace PokemonBattle.Moves.Actions
                 E *= pType.calcEfectivity(move.ptype, type);
             }
 
-            float V = (new Random()).Next(85, 101);
+            float V = new Random().Next(85, 101);
 
             float N = self.level;
 
@@ -62,14 +62,14 @@ namespace PokemonBattle.Moves.Actions
             float P = move.power;
 
 
-            float damage = 0.01f * B * E * V * (((0.2f * N + 1) * A * P) / (25 * D) + 2);
+            float damage = 0.01f * B * E * V * ((0.2f * N + 1) * A * P / (25 * D) + 2);
 
             target.stats.hp = (int)Math.Truncate(target.stats.hp - damage);
 
             return $"{self.name}->{target.name}: {move.name}({move.type},{move.ptype})->({target.types[0]},{target.types[1]}{{{E}}} ==> {Math.Ceiling(damage)})";
 
         }
-        public static String testttttto(Move move, Pokemon self, Pokemon target)
+        public static string testttttto(Move move, PokemonActive self, PokemonActive target)
         {
 
             float B = 1;
@@ -82,7 +82,7 @@ namespace PokemonBattle.Moves.Actions
                 E *= pType.calcEfectivity(move.ptype, type);
             }
 
-            float V = (new Random()).Next(85, 101);
+            float V = new Random().Next(85, 101);
 
             float N = self.level;
 
@@ -109,7 +109,7 @@ namespace PokemonBattle.Moves.Actions
             float P = move.power;
 
 
-            float damage = 0.01f * B * E * V * (((0.2f * N + 1) * A * P) / (25 * D) + 2);
+            float damage = 0.01f * B * E * V * ((0.2f * N + 1) * A * P / (25 * D) + 2);
 
             target.stats.hp = (int)Math.Truncate(target.stats.hp - damage);
 

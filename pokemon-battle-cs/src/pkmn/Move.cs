@@ -1,15 +1,15 @@
-﻿using PokemonBattle.Moves.Actions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokemonBattle.Moves.Actions;
 
 namespace PokemonBattle.Moves
 {
     internal class Move
     {
-        public static Dictionary<String, Move> KeyMovePair = new Dictionary<String, Move>();
+        public static Dictionary<string, Move> KeyMovePair = new Dictionary<string, Move>();
 
         public string name;
         public string description;
@@ -17,7 +17,7 @@ namespace PokemonBattle.Moves
         public mType type;
         public int power;
 
-        public Func<Move, Pokemon, Pokemon, string>? onAttack;
+        public Func<Move, PokemonActive, PokemonActive, string>? onAttack;
 
 
         public Move fromString(string s, char sep = ';')
@@ -52,10 +52,10 @@ namespace PokemonBattle.Moves
         {
             this.name = name;
             this.description = description;
-            this.ptype = pType;
+            ptype = pType;
             this.type = type;
             this.power = power;
-            this.onAttack = MoveActions.parseAttack(onAttackString);
+            onAttack = MoveActions.parseAttack(onAttackString);
         }
 
         public override string ToString()

@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 public class database
 {
 
-    public static string databaseFile = "D:\\pokemon-battle\\pokemon-battle-cs\\pokemon-battle-cs\\data\\pkmnDatabase.mdf";
-    public static string conString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databaseFile};Integrated Security=True";
+    public static string conString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databaseLoc.LOCATION};Integrated Security=True";
 
     
 

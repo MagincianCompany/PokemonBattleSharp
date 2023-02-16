@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PokemonBattle.Moves.Actions;
+using Pokemons.Types;
+using Pokemons.Moves.Actions;
 
-namespace PokemonBattle.Moves
+namespace Pokemons.Moves
 {
     internal class Move
     {

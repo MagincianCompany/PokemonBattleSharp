@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
-using PokemonBattle;
+using Pokemons;
+using Pokemons.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 public class database
 {
 
-
-    public static string conString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\pokemon-battle\\cs\\pokemon-battle\\pokemon-battle-cs\\pokemon-battle-cs\\data\\pkmnDatabase.mdf;Integrated Security=True";
+    public static string databaseFile = "D:\\pokemon-battle\\pokemon-battle-cs\\pokemon-battle-cs\\data\\pkmnDatabase.mdf";
+    public static string conString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databaseFile};Integrated Security=True";
 
     
 

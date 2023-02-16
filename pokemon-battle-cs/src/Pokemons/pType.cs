@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonBattle
+namespace Pokemons.Types
 {
     public static class pType
     {
@@ -158,7 +158,7 @@ namespace PokemonBattle
                 {
                     ret = 1 / 2f;
                 }
-                else if (def == types.STEEL || def == types.ELECTRIC || def == types.ROCK || def == types.GROUND)
+                else if (def == types.STEEL || def == types.ELECTRIC || def == types.ROCK || def == types.POISON)
                 {
                     ret = 2f;
                 }

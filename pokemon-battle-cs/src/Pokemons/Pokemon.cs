@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PokemonBattle.Moves;
+using Pokemons.Moves;
+using Pokemons.Types;
 
-namespace PokemonBattle
+namespace Pokemons
 {
     internal class Pokemon
     {
@@ -102,19 +103,21 @@ namespace PokemonBattle
         internal int userId;
         internal int level;
         internal Move?[] moves = new Move[3];
+        internal Stats multiplyStats;
+        internal Stats activeStats { get {return new Stats(stats.hp*multiplyStats.hp,
+            stats.atk*multiplyStats.atk,
+            stats.def*multiplyStats.def,
+            stats.spa*multiplyStats.spa,
+            stats.spd*multiplyStats.spd,
+            stats.spe*multiplyStats.spe); } }
 
         public PokemonActive(string name, int userId, int level, Stats? stats, pType.types t1, pType.types? t2, params Move[] moves):base(name,stats,t1,t2)
         {
-            this.name = name;
             this.userId = userId;
             this.level = level;
-            this.stats = stats;
-
-            types = new pType.types?[2];
-            types[0] = t1;
-            types[1] = t2;
-
             this.moves = moves;
+
+            multiplyStats = new Stats(1, 1, 1, 1, 1, 1);
         }
         public PokemonActive(Pokemon p,int userId,int level, params string[] moves) : base(p)
         {
@@ -128,17 +131,13 @@ namespace PokemonBattle
             }
 
             this.moves = movesList.ToArray();
+
+            multiplyStats = new Stats(1, 1, 1, 1, 1, 1);
         }
-        public PokemonActive(string name, int userId, int level, Stats? stats, pType.types t1, pType.types? t2, params string[] moves) : base(name, stats, t1, t2)
+        public PokemonActive(string p, int userId, int level, params string[] moves) : base(Pokemon.preloadedPokemons[p])
         {
-            this.name = name;
             this.userId = userId;
             this.level = level;
-            this.stats = stats;
-
-            types = new pType.types?[2];
-            types[0] = t1;
-            types[1] = t2;
 
             List<Move> movesList = new List<Move>();
             foreach (var move in moves)
@@ -147,6 +146,23 @@ namespace PokemonBattle
             }
 
             this.moves = movesList.ToArray();
+
+            multiplyStats = new Stats(1, 1, 1, 1, 1, 1);
+        }
+        public PokemonActive(string name, int userId, int level, Stats? stats, pType.types t1, pType.types? t2, params string[] moves) : base(name, stats, t1, t2)
+        {
+            this.userId = userId;
+            this.level = level;
+
+            List<Move> movesList = new List<Move>();
+            foreach (var move in moves)
+            {
+                movesList.Add(Move.KeyMovePair[move]);
+            }
+
+            this.moves = movesList.ToArray();
+
+            multiplyStats = new Stats(1, 1, 1, 1, 1, 1);
         }
 
         new public static PokemonActive fromString(string s)

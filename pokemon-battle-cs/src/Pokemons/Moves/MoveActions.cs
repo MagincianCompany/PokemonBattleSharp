@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pokemons;
+using Pokemons.Types;
 
-namespace PokemonBattle.Moves.Actions
+namespace Pokemons.Moves.Actions
 {
     internal abstract class MoveActions
     {
@@ -43,14 +45,14 @@ namespace PokemonBattle.Moves.Actions
             float D = 1;
             if (move.type == Move.mType.PHSYSICAL)
             {
-                A = self.stats.atk;
-                D = target.stats.def;
+                A = self.activeStats.atk;
+                D = target.activeStats.def;
             }
             else if (move.type == Move.mType.SPECIAL)
             {
 
-                A = self.stats.spa;
-                D = target.stats.spd;
+                A = self.activeStats.spa;
+                D = target.activeStats.spd;
             }
             else
             {
@@ -69,52 +71,6 @@ namespace PokemonBattle.Moves.Actions
             return $"{self.name}->{target.name}: {move.name}({move.type},{move.ptype})->({target.types[0]},{target.types[1]}{{{E}}} ==> {Math.Ceiling(damage)})";
 
         }
-        public static string testttttto(Move move, PokemonActive self, PokemonActive target)
-        {
-
-            float B = 1;
-            if (self.types.Contains(move.ptype))
-                B = 1.5f;
-
-            float E = 1;
-            foreach (var type in target.types)
-            {
-                E *= pType.calcEfectivity(move.ptype, type);
-            }
-
-            float V = new Random().Next(85, 101);
-
-            float N = self.level;
-
-            float A = 1;
-            float D = 1;
-            if (move.type == Move.mType.PHSYSICAL)
-            {
-                A = self.stats.atk;
-                D = target.stats.def;
-            }
-            else if (move.type == Move.mType.SPECIAL)
-            {
-
-                A = self.stats.spa;
-                D = target.stats.spd;
-            }
-            else
-            {
-                A = 0;
-                B = 0;
-            }
-
-
-            float P = move.power;
-
-
-            float damage = 0.01f * B * E * V * ((0.2f * N + 1) * A * P / (25 * D) + 2);
-
-            target.stats.hp = (int)Math.Truncate(target.stats.hp - damage);
-
-            return $"{self.name}->{target.name}: {move.name}({move.type},{move.ptype})->({target.types[0]},{target.types[1]}{{{E}}} ==> {Math.Ceiling(damage)})";
-
-        }
+        
     }
 }
